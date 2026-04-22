@@ -27,7 +27,7 @@ body {
     color: var(--color-4);
     overflow-x: hidden;
     background-color: var(--color-1); 
-    background-image: url('imagen/fondo.jpg'); 
+    background-image: url('fondo.jpg'); 
     background-size: cover;
     background-position: center;
     background-attachment: fixed; 
