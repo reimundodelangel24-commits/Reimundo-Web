@@ -1,0 +1,415 @@
+/* ================= FUENTES (DEBE IR AL PRINCIPIO) ================= */
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&display=swap');
+
+/* ================= Variables de Color ================= */
+:root {
+    --color-1: #BAC8B1; /* Verde muy claro (186, 200, 177) */
+    --color-2: #7B9669; /* Verde medio (123, 150, 105) */
+    --color-3: #6C8480; /* Verde azulado/Teal (108, 132, 128) */
+    --color-4: #404E3B; /* Verde oscuro (64, 78, 59) */
+    --bg-header: #6C8480; /* Mismo que color-3 para el encabezado */
+    --sidebar-width: 220px;
+}
+
+/* ================= Estilos Globales ================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    color: var(--color-4);
+    overflow-x: hidden;
+    background-color: var(--color-1); 
+    background-image: url('imagen/fondo.jpg'); 
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; 
+}
+
+/* ================= Barra de Desplazamiento ================= */
+::-webkit-scrollbar { width: 12px; }
+::-webkit-scrollbar-track { background: var(--color-1); }
+::-webkit-scrollbar-thumb { background: var(--color-3); border-radius: 6px; }
+::-webkit-scrollbar-thumb:hover { background: var(--color-4); }
+
+/* ================= Menú Vertical (Escritorio) ================= */
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: var(--sidebar-width);
+    height: 100vh;
+    background-color: rgba(64, 78, 59, 0.95); /* var(--color-4) con transparencia */
+    backdrop-filter: blur(10px);
+    padding: 3rem 0;
+    z-index: 1000;
+    box-shadow: 2px 0 15px rgba(0,0,0,0.5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+nav ul {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    gap: 2.5rem;
+    width: 100%;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+nav a {
+    color: var(--color-1);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: color 0.3s, transform 0.3s;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    display: block;
+    width: 100%;
+}
+
+nav a:hover { 
+    color: var(--color-2); 
+    transform: scale(1.1);
+}
+
+/* ================= Contenedor Principal ================= */
+.main-wrapper {
+    margin-left: var(--sidebar-width);
+    width: calc(100% - var(--sidebar-width));
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+/* ================= Encabezado ================= */
+header {
+    background-color: rgba(108, 132, 128, 0.9); /* var(--bg-header) con transparencia */
+    height: 25vh; 
+    min-height: 180px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+}
+
+h1 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 4rem; 
+    color: var(--color-1);
+    text-shadow: 2px 2px 5px rgba(64, 78, 59, 0.5); /* Sombra suave adaptada a --color-4 */
+    animation: fadeInDown 1.5s ease-out forwards;
+}
+
+#perfil-foto-container {
+    position: absolute;
+    top: 20px; 
+    right: 30px;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 5px solid var(--color-2);
+    background-color: var(--color-1);
+    overflow: hidden;
+    box-shadow: 0 8px 15px rgba(0,0,0,0.4);
+    z-index: 10;
+    transition: transform 0.3s;
+    animation: profileIn 1.5s ease-out;
+}
+
+#perfil-foto-container:hover { transform: scale(1.1) rotate(5deg); }
+#perfil-foto-container img { width: 100%; height: 100%; object-fit: cover; }
+
+/* ================= Secciones Generales ================= */
+section {
+    padding: 5rem 2rem; 
+    text-align: center;
+    /* Fondo verde muy claro (--color-1) con transparencia */
+    background-color: rgba(186, 200, 177, 0.90); 
+}
+
+section:nth-child(even) { 
+    /* Fondo verde medio (--color-2) con transparencia */
+    background-color: rgba(123, 150, 105, 0.85); 
+}
+
+h2 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    color: var(--color-4);
+}
+
+.hidden-scroll {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.show-scroll { opacity: 1; transform: translateY(0); }
+
+/* ================= Robot 3D ================= */
+model-viewer {
+    width: 100%;
+    max-width: 400px;
+    height: 400px;
+    margin: 0 auto;
+    background: radial-gradient(circle, var(--color-1) 0%, var(--color-2) 100%);
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(64, 78, 59, 0.3);
+}
+
+/* ================= Carrusel ================= */
+.carousel-wrapper {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 15px 30px rgba(64, 78, 59, 0.4); /* Sombra var(--color-4) */
+}
+
+.carousel-slide {
+    display: flex;
+    transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.carousel-slide img {
+    width: 100%;
+    height: 450px;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(64, 78, 59, 0.6); /* var(--color-4) */
+    color: var(--color-1);
+    border: none;
+    padding: 1rem;
+    cursor: pointer;
+    border-radius: 50%;
+    z-index: 10;
+}
+
+.prev { left: 10px; }
+.next { right: 10px; }
+
+/* ================= TARJETA DE HERRAMIENTAS ================= */
+.dev-tools-section {
+    --dev-bg: var(--color-4); 
+    --dev-text: var(--color-1); 
+    --dev-g1: #3b82f6; 
+    --dev-g2: #8b5cf6; 
+    --dev-g3: #0ea5e9; 
+    --dev-g4: #10b981; 
+
+    background: var(--dev-bg);
+    padding: 3.5rem 2rem;
+    border-radius: 20px;
+    max-width: 500px;
+    margin: 3rem auto; 
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    text-align: center;
+}
+
+.dev-tools-section h2 {
+    color: var(--dev-text);
+    font-family: 'Dancing Script', cursive; 
+    font-size: 2.8rem;
+    margin-bottom: 2.5rem;
+}
+
+.dev-tools-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 110px); 
+    gap: 30px;
+    justify-content: center;
+}
+
+.dev-tools-item {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    padding: 4px; 
+    background: linear-gradient(45deg, var(--dev-g1), var(--dev-g2), var(--dev-g3), var(--dev-g4));
+    background-size: 200% 200%;
+    animation: devFlotar 4s ease-in-out infinite, devColores 6s ease infinite;
+    transition: transform 0.4s;
+}
+
+.dev-tools-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 50%;
+    background-color: var(--dev-bg);
+    border: 3px solid var(--dev-bg);
+}
+
+.dev-tools-item:hover { transform: scale(1.15); }
+
+@keyframes devFlotar {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+}
+
+@keyframes devColores {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* ================= Contacto ================= */
+.contact-card {
+    background: rgba(186, 200, 177, 0.95); /* var(--color-1) ligeramente transparente */
+    padding: 3rem;
+    border-radius: 20px;
+    max-width: 500px;
+    margin: 0 auto;
+    border: 2px solid var(--color-3); 
+    box-shadow: 0 15px 35px rgba(64, 78, 59, 0.25); /* var(--color-4) */
+}
+
+.contact-card h2 {
+    color: var(--color-4);
+}
+
+.instagram-btn {
+    display: inline-block;
+    margin-top: 1.5rem;
+    padding: 1rem 2rem;
+    background: linear-gradient(45deg, #f09433, #bc1888); /* Degradado original de Instagram */
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 30px;
+    transition: transform 0.3s ease;
+}
+
+.instagram-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(188, 24, 136, 0.4);
+}
+
+/* ================= Pie de página ================= */
+footer {
+    background-color: var(--color-4);
+    color: var(--color-1);
+    text-align: center;
+    padding: 2.5rem;
+}
+
+/* ================= DISEÑO RESPONSIVO (Móviles) ================= */
+@media (max-width: 850px) {
+    nav {
+        width: 100%;
+        height: auto;
+        padding: 0.8rem;
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    nav ul {
+        flex-direction: row;
+        margin-top: 0;
+        gap: 1rem;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    nav a { font-size: 0.75rem; letter-spacing: 1px; }
+
+    .main-wrapper {
+        margin-left: 0;
+        width: 100%;
+        margin-top: 70px;
+    }
+
+    h1 { font-size: 2.5rem; }
+    #perfil-foto-container { width: 70px; height: 70px; top: 10px; right: 10px; }
+
+    .dev-tools-section {
+        width: 92%; 
+        padding: 2rem 1rem;
+    }
+
+    .dev-tools-grid {
+        grid-template-columns: repeat(2, 85px); 
+        gap: 15px;
+    }
+
+    .dev-tools-item { width: 85px; height: 85px; }
+
+    .dev-tools-section h2 { font-size: 2rem; }
+
+    model-viewer { height: 300px; }
+    .carousel-slide img { height: 280px; }
+}
+
+/* Animaciones de entrada */
+@keyframes fadeInDown {
+    0% { opacity: 0; transform: translateY(-20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes profileIn {
+    0% { opacity: 0; transform: scale(0.5); }
+    100% { opacity: 1; transform: scale(1); }
+}
+
+/* ================= BOTÓN PARA VER FONDO Y EFECTO DE OCULTAR ================= */
+#toggle-bg-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: var(--color-4);
+    color: var(--color-1);
+    border: 2px solid var(--color-2);
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    font-size: 1.8rem;
+    cursor: pointer;
+    z-index: 9999;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#toggle-bg-btn:hover {
+    transform: scale(1.1);
+    background-color: var(--color-3);
+}
+
+/* MAGIA: Oculta la navegación y el contenedor principal suavemente */
+.content-hidden nav,
+.content-hidden .main-wrapper {
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important; 
+}
+
+@media (max-width: 850px) {
+    #toggle-bg-btn {
+        bottom: 20px;
+        right: 20px;
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+    }
+}

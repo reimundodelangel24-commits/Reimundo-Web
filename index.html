@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de Reimundo</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="styles.css">
+    
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
+</head>
+<body>
+
+    <nav>
+        <ul>
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#seccion-robot">Robot</a></li>
+            <li><a href="#seccion-carrusel">Galería</a></li>
+            <li><a href="#seccion-contacto">Contacto</a></li>
+        </ul>
+    </nav>
+
+    <div class="main-wrapper">
+        
+        <header id="inicio">
+            <h1>Bienvenid@</h1>
+            <div id="perfil-foto-container">
+                <img src="imagen/Foto_perfil.jpg" alt="Foto de perfil de Reimundo"> 
+            </div>
+        </header>
+
+        <main>
+            <section id="seccion-robot" class="hidden-scroll">
+                <h2>¡Hola! :) </h2>
+               
+                <model-viewer 
+                    id="robot-interactivo"
+                    src="https://modelviewer.dev/shared-assets/models/RobotExpressive.glb" 
+                    alt="Un robot 3D animado y realista" 
+                    autoplay 
+                    animation-name="Wave" 
+                    shadow-intensity="1"
+                    disable-zoom
+                    touch-action="pan-y">
+                </model-viewer>
+
+                <p style="margin-top: 1rem; color: var(--color-3); font-size: 1.1rem;">
+                    Pasa el cursor sobre mí (o tócame) para interactuar y girarme.
+                </p>
+            </section>
+
+            <section id="seccion-carrusel" class="hidden-scroll">
+                <h2>GALERÍA</h2>
+                <div class="carousel-wrapper" id="contenedor-carrusel">
+                    <button class="carousel-btn prev" onclick="moverCarrusel(-1)">&#10094;</button>
+                    <div class="carousel-slide" id="carrusel-slide">
+                        <img src="imagen/Img_1.jpg" alt="Imagen 1">
+                        <img src="imagen/Img_2.jpg" alt="Imagen 2">
+                        <img src="imagen/Img_3.jpg" alt="Imagen 3">
+                        <img src="imagen/Img_4.jpg" alt="Imagen 4">
+                        <img src="imagen/Img_5.jpg" alt="Imagen 5">
+                        <img src="imagen/Img_6.jpg" alt="Imagen 6">                       
+                    </div>
+                    <button class="carousel-btn next" onclick="moverCarrusel(1)">&#10095;</button>
+                </div>
+            </section>
+
+            <section class="dev-tools-section">
+                <h2>Mis Herramientas</h2>
+                
+                <div class="dev-tools-grid">
+                    <div class="dev-tools-item">
+                        <img src="logotipo/logo_html.png" alt="HTML5">
+                    </div>
+                    <div class="dev-tools-item">
+                        <img src="logotipo/logo_css.png" alt="CSS3">
+                    </div>
+                    <div class="dev-tools-item">
+                        <img src="logotipo/logo_javascript.png" alt="JavaScript">
+                    </div>
+                    <div class="dev-tools-item">
+                        <img src="logotipo/logo_github.png" alt="GitHub">
+                    </div>
+                </div>
+            </section>
+
+            <section id="seccion-contacto" class="hidden-scroll">
+                <div class="contact-card">
+                    <h2>CONTACTO</h2>
+                    <p>Sígueme en mis redes sociales para no perderte ninguna actualización.</p>
+                    <a href="https://www.instagram.com/reimundo.0_0?igsh=MTNudmhzOG43djhjMw==" target="_blank" class="instagram-btn">
+                        Seguir en Instagram
+                    </a>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>®Todos los derechos reservados. Página web  desarrollada por:</p>
+            <p>Reimundo D.A.P</p>
+        </footer>
+    </div> 
+    
+   <button id="toggle-bg-btn" title="Ver fondo">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+    </button>
+
+    <script src="script.js"></script>
+</body>
+</html>
